@@ -10,7 +10,7 @@ const bodyParser = require("body-parser")
 const multer = require("multer");
 const path = require("path");
 const cors= require('cors')
-const PORT=5000;
+const PORT=process.env.PORT || 5000;
 
 dotenv.config();
 app.use(cors());
