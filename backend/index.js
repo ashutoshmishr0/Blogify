@@ -14,15 +14,15 @@ const { Server } = require("http");
 const PORT=process.env.PORT || 5000;
 
 const options = {
-	origin: "https://blogify-six-wine.vercel.app/", // Replace with your frontend URL
-	credentials: true, // Include if sending cookies
-	methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-	allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
+	origin: "https://66957c216a89c9a8dc04bfe0--venerable-caramel-3e3745.netlify.app/", // Replace with your frontend URL
+	// credentials: true, // Include if sending cookies
+	// methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+	// allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
 };
 
 
 dotenv.config();
-app.use(cors());
+app.use(cors(origin));
 app.use(bodyParser.json());
 app.use(express.json());
 
