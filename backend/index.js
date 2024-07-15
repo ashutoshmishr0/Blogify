@@ -14,7 +14,7 @@ const { Server } = require("http");
 const PORT=process.env.PORT || 5000;
 
 const options = {
-	origin: "https://66957c216a89c9a8dc04bfe0--venerable-caramel-3e3745.netlify.app/", // Replace with your frontend URL
+	origin: "https://blogify-six-wine.vercel.app/", // Replace with your frontend URL
 	credentials: true, // Include if sending cookies
 	methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
 	allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
@@ -22,7 +22,7 @@ const options = {
 
 
 dotenv.config();
-app.use(cors(options));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
