@@ -12,7 +12,7 @@ import Topbar from "./components/topbar/Topbar";
 function App() {
   const { user } = useContext(Context);
   return (
-    <BrowserRouter>
+    <div>
       <Topbar />
       <Routes>
         <Route path="/" element={<Home />} exact />
@@ -22,7 +22,7 @@ function App() {
         <Route path="/settings" element={user ? <Settings /> : <Register />} />
         <Route path="/post/:postId" element={<Single />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 
