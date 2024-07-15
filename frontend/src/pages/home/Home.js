@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Posts from "../../components/posts/Posts";
-import Footer from "../../components/footer/Footer";
+
 
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./home.css";
@@ -26,7 +26,7 @@ export default function Home() {
         <Posts posts={posts}/>
         <Sidebar />
       </div>
-      <Footer/>
+      
     </>
   );
 }
