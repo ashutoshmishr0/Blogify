@@ -25,16 +25,17 @@ export default function Sidebar() {
           Welcome to our blogging community! We're thrilled to have you here. Create your account to start sharing your unique stories and insights with the world. Feel free to update and refine your posts anytime, and if needed, you can also delete them. Join us in creating a vibrant and engaging platform for everyone!
         </p>
       </div>
-      {/* <div className="sidebarItem">
+      <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          {cats.map((c) => (
+          {console.log(cats)}
+          {cats?.map((c) => (
             <Link to={`/?cat=${c.name}`} className="link">
             <li className="sidebarListItem">{c.name}</li>
             </Link>
           ))}
         </ul>
-      </div> */}
+      </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">FOLLOW US</span>
         <div className="sidebarSocial">
