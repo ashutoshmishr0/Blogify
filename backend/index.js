@@ -9,8 +9,16 @@ const categoryRoute = require("./routes/categories");
 const bodyParser = require("body-parser")
 const multer = require("multer");
 const path = require("path");
-const cors= require('cors')
+const cors= require('cors');
+const { Server } = require("http");
 const PORT=process.env.PORT || 5000;
+
+const options = {
+	origin: "https://blogify-six-wine.vercel.app/", // Replace with your frontend URL
+	credentials: true, // Include if sending cookies
+	methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+	allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
+};
 
 dotenv.config();
 app.use(cors());
