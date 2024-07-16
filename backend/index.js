@@ -14,7 +14,7 @@ const { Server } = require("http");
 const PORT=process.env.PORT || 5000;
 
 const options = {
-	origin:"https://66957c216a89c9a8dc04bfe0--venerable-caramel-3e3745.netlify.app/",  // Replace with your frontend URL
+	origin:"https://6695c7fcaa2ab1f5ba3ff1b2--vocal-platypus-cdd97d.netlify.app/",  // Replace with your frontend URL
 	credentials: true, // Include if sending cookies
 	methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
 	allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
