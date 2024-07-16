@@ -44,23 +44,23 @@ mongoose
 
 // const upload = multer({ storage: storage });
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.resolve(`/images`));
-  },
-  filename: function (req, file, cb) {
-    const fileName = `${Date.now()}-${file.originalname}`;
-    cb(null, fileName);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, path.resolve(`/images`));
+//   },
+//   filename: function (req, file, cb) {
+//     const fileName = `${Date.now()}-${file.originalname}`;
+//     cb(null, fileName);
+//   },
+// });
 
-const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"),async (req, res) => {
-  const localFilePath = req.file?.path;
-  const ProfileFile = await uploadOnCloudinary(localFilePath);
-     console.log(ProfileFile)
-  res.status(200).json("File has been uploaded");
-});
+// const upload = multer({ storage: storage });
+// app.post("/api/upload", upload.single("photo"),async (req, res) => {
+//   const localFilePath = req.file?.path;
+//   const ProfileFile = await uploadOnCloudinary(localFilePath);
+//      console.log(ProfileFile)
+//   res.status(200).json("File has been uploaded");
+// });
 
 
 app.use("/api/auth", authRoute);
