@@ -14,16 +14,14 @@ const { Server } = require("http");
 const PORT=process.env.PORT || 5000;
 
 const options = {
-	origin:"*",  // Replace with your frontend URL
+	origin: "*", // Replace with your frontend URL
 	credentials: true, // Include if sending cookies
 	methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
 	allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
 };
 
 dotenv.config();
-app.use(cors({
-  origin: "*",
-}));
+app.use(cors(options));
 app.use(bodyParser.json());
 app.use(express.json());
 
@@ -48,10 +46,10 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
-app.use("/auth", authRoute);
-app.use("/users", userRoute);
-app.use("/posts", postRoute);
-app.use("/categories", categoryRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
+app.use("/api/categories", categoryRoute);
 
 app.listen(PORT, () => {
   console.log(`Backend is running.on PORT:${PORT}`);
