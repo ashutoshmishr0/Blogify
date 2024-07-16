@@ -23,7 +23,7 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("https://blogify-vxjr.onrender.com/", data);
+        await axios.post("/upload", data);
       } catch (err) {}
     }
     try {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import Posts from "../../components/posts/Posts";
 
 
@@ -26,7 +27,7 @@ export default function Home() {
         <Posts posts={posts}/>
         <Sidebar />
       </div>
-      
+        <Footer/>
     </>
   );
 }
