@@ -4,8 +4,8 @@
 }
 @media only screen and (max-width: 600px) {
     .home {
-        padding-right: 20px;
-        margin-right: 10px;
+        
+        margin-right: 15px;
         margin-left:0px ;
         margin-top: 10px;
         overflow: hidden;
