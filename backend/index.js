@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const { uploadOnCloudinary } = require('./utils/cloudinary');
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
@@ -26,42 +25,26 @@ app.use(cors(options));
 app.use(bodyParser.json());
 app.use(express.json());
 
-//  app.use("/images", express.static(path.join(__dirname, "/images")));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
   .connect(process.env.MONGO_URL)
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "images");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, req.body.name);
-//   },
-// });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+});
 
-// const upload = multer({ storage: storage });
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, path.resolve(`/images`));
-//   },
-//   filename: function (req, file, cb) {
-//     const fileName = `${Date.now()}-${file.originalname}`;
-//     cb(null, fileName);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-// app.post("/api/upload", upload.single("photo"),async (req, res) => {
-//   const localFilePath = req.file?.path;
-//   const ProfileFile = await uploadOnCloudinary(localFilePath);
-//      console.log(ProfileFile)
-//   res.status(200).json("File has been uploaded");
-// });
-
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json("File has been uploaded");
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
