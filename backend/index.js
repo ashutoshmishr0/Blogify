@@ -26,7 +26,7 @@ app.use(cors(options));
 app.use(bodyParser.json());
 app.use(express.json());
 
- app.use("/images", express.static(path.join(__dirname, "/images")));
+//  app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -46,7 +46,7 @@ mongoose
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.resolve(`./public/images/`));
+    cb(null, path.resolve(`images/`));
   },
   filename: function (req, file, cb) {
     const fileName = `${Date.now()}-${file.originalname}`;
