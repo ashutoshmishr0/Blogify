@@ -6,7 +6,7 @@ const { uploadOnCloudinary } = require('../utils/cloudinary');
 
 //CREATE POST
 router.post("/", uploader.single("photo"),async (req, res) => {
-  const newPost = new Post(req.body);
+  // const newPost = new Post(req.body);
   const localFilePath = req.file?.path;
     // console.log(localFilePath)
     const blogFile = await uploadOnCloudinary(localFilePath);
@@ -15,6 +15,13 @@ router.post("/", uploader.single("photo"),async (req, res) => {
     if(!blogFile){
         throw new Error("Error while upoading blog image on cloudinary");
     }
+    const newPost = new Post.create({
+    title,
+    desc,
+    username,
+    photo: req.file?.path,
+   
+  });
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
