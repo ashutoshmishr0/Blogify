@@ -46,7 +46,7 @@ mongoose
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.resolve(`images/`));
+    cb(null, path.resolve(`/images`));
   },
   filename: function (req, file, cb) {
     const fileName = `${Date.now()}-${file.originalname}`;
@@ -56,6 +56,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"),async (req, res) => {
+  const localFilePath = req.file?.path;
   const ProfileFile = await uploadOnCloudinary(localFilePath);
      console.log(ProfileFile)
   res.status(200).json("File has been uploaded");
