@@ -6,6 +6,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
+const { uploadOnCloudinary } = require('./utils/cloudinary');
 const bodyParser = require("body-parser")
 const multer = require("multer");
 const path = require("path");
@@ -42,7 +43,15 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
+app.post("/api/upload", upload.single("file"),async (req, res) => {
+         const localFilePath = req.file?.path;
+    // console.log(localFilePath)
+    const blogFile = await uploadOnCloudinary(localFilePath);
+     console.log(blogFile)
+
+    if(!blogFile){
+        throw new Error("Error while upoading blog image on cloudinary");
+    }
   res.status(200).json("File has been uploaded");
 });
 
